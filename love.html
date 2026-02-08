@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Forever Us ❤️</title>
+<style>
+body{margin:0;background:#fff0f5;font-family:Arial;text-align:center;overflow:hidden;}
+h1{color:#ff0055;font-size:36px;margin-top:40px;}
+#ring{font-size:80px;animation:ringPop 2s ease;}
+@keyframes ringPop{0%{transform:scale(0)}70%{transform:scale(1.3)}100%{transform:scale(1)}}
+.fireworks{position:absolute;width:100%;height:100%;top:0;left:0;pointer-events:none;z-index:0;}
+.fire{position:absolute;font-size:22px;animation:boom 1.5s linear;}
+@keyframes boom{0%{transform:scale(0);opacity:1}100%{transform:scale(3);opacity:0}}
+.sparkle-wrap{position:relative;display:inline-block;margin-top:20px;z-index:2;}
+.sparkle-wrap::before{content:"✨ ✨ ✨";position:absolute;top:-15px;left:50%;transform:translateX(-50%);animation:sparkle 2s infinite;}
+@keyframes sparkle{0%{opacity:0.3}50%{opacity:1}100%{opacity:0.3}}
+.main-photo{width:340px;max-width:90%;border-radius:22px;box-shadow:0 12px 30px rgba(0,0,0,0.4);}
+.caption{font-size:22px;color:#ff0055;margin-top:12px;}
+.journey{font-size:18px;color:#444;font-style:italic;}
+.hidden{display:none;}
+</style>
+</head>
+<body>
+<h1>❤️ Love You ❤️</h1>
+<div id="ring">💍</div>
+<div class="fireworks hidden" id="fireworksBox"></div>
+<div class="sparkle-wrap hidden" id="photoBox">
+  <img src="family-love.jpg" class="main-photo">
+</div>
+<p class="caption hidden" id="caption"></p>
+<p class="journey hidden" id="journey"></p>
+
+<audio id="bgSong">
+  <source src="klesa-kadhala.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+const captionText="Our love, our world, our forever 💖";
+const journeyText="Our journey since 2011 ⏳";
+let i=0;
+function fireworks(){
+  for(let j=0;j<25;j++){
+    let f=document.createElement("div");
+    f.className="fire";f.innerHTML="🎆";
+    f.style.left=Math.random()*100+"vw";
+    f.style.top=Math.random()*100+"vh";
+    fireworksBox.appendChild(f);
+    setTimeout(()=>f.remove(),1500);
+  }
+}
+setTimeout(()=>{
+  fireworksBox.classList.remove("hidden");fireworks();
+  photoBox.classList.remove("hidden");
+  bgSong.currentTime=30;bgSong.play();
+  caption.classList.remove("hidden");
+  let t=setInterval(()=>{
+    caption.innerHTML+=captionText.charAt(i);i++;
+    if(i===captionText.length){
+      clearInterval(t);
+      journey.classList.remove("hidden");
+      journey.innerHTML=journeyText;
+    }
+  },80);
+},2200);
+</script>
+</body>
+</html>

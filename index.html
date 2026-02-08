@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Will You Be My Valentine?</title>
+<style>
+body{
+  margin:0;height:100vh;
+  background:linear-gradient(to right,#ff758c,#ff7eb3);
+  font-family:Arial;text-align:center;overflow:hidden;
+}
+h1{color:white;font-size:40px;margin-top:100px;}
+button{font-size:22px;padding:14px 30px;border:none;border-radius:10px;cursor:pointer;}
+#yes{background:#ff004f;color:white;transition:0.3s;}
+#no{background:#555;color:white;position:absolute;}
+.fire{position:absolute;font-size:24px;animation:boom 1.2s linear;}
+@keyframes boom{0%{transform:scale(0);opacity:1}100%{transform:scale(3);opacity:0}}
+</style>
+</head>
+<body>
+<h1>💖 Will you be my Valentine? 💖</h1>
+<button id="yes" onclick="yesClick()">YES 💕</button>
+<button id="no" onmouseover="moveNo()">NO 😜</button>
+<script>
+let size=1;
+function yesClick(){
+  size+=0.25;
+  document.getElementById("yes").style.transform=`scale(${size})`;
+  fireworks();
+  if(size>2){setTimeout(()=>{window.location.href="love.html"},1200);}
+}
+function moveNo(){
+  no.style.left=Math.random()*80+"vw";
+  no.style.top=Math.random()*80+"vh";
+}
+function fireworks(){
+  for(let i=0;i<20;i++){
+    let f=document.createElement("div");
+    f.className="fire";f.innerHTML="🎆";
+    f.style.left=Math.random()*100+"vw";
+    f.style.top=Math.random()*100+"vh";
+    document.body.appendChild(f);
+    setTimeout(()=>f.remove(),1200);
+  }
+}
+</script>
+</body>
+</html>
