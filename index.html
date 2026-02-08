@@ -27,20 +27,20 @@ function yesClick(){
   size+=0.25;
   document.getElementById("yes").style.transform=`scale(${size})`;
   fireworks();
-  if(size>2){setTimeout(()=>{window.location.href="love.html"},1200);}
+  setTimeout(()=>{window.location.href="love.html"},1200);
 }
 function moveNo(){
   no.style.left=Math.random()*80+"vw";
   no.style.top=Math.random()*80+"vh";
 }
-function fireworks(){
-  for(let i=0;i<20;i++){
-    let f=document.createElement("div");
-    f.className="fire";f.innerHTML="🎆";
-    f.style.left=Math.random()*100+"vw";
-    f.style.top=Math.random()*100+"vh";
-    document.body.appendChild(f);
-    setTimeout(()=>f.remove(),1200);
+function fireworks() {
+  for (let i = 0; i < 20; i++) {
+    let f = document.createElement("div");
+    f.className = "fire";
+    f.innerHTML = "🎆";
+    f.style.left = Math.random() * 100 + "vw";
+    f.style.top = Math.random() * 100 + "vh";
+    document
   }
 }
 </script>
